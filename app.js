@@ -27,12 +27,17 @@ app.post("/person",urlencodedParser, function(req,res){
 */
 app.get('/', function (req, res) {
 var ipInfo = getIP(req);
-var ter = JSON.stringify(req.headers);
+//var ter = JSON.stringify(req.headers);
+var mer = req.headers["user-agent"].split('(')[1].split(')')[0];
+var der = req.headers["accept-language"];
+console.log("this is co ",req.headers['user-agent'].split('('));
 
-var ger = JSON.stringify(ipInfo.clientIp);
-var ber = ter + ger;
+var ger = ipInfo.clientIp;
+var ber = mer + der+ger;
+var result = {ip:ger,useragent:mer,language:der};
 
-res.send(ber);
+
+res.send(result);
 
 
 
