@@ -27,8 +27,9 @@ app.post("/person",urlencodedParser, function(req,res){
 */
 app.get('/', function (req, res) {
 var ipInfo = getIP(req);
-var ter = JSON.stringify(req.headers);
-var ger = JSON.stringify(ipInfo);
+var ter = JSON.stringify(req.headers.accept-language);
+var ter = JSON.stringify(req.headers.user-agent);
+var ger = JSON.stringify(ipInfo.clientIp);
 var ber = ter + ger;
 console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 console.log("amazinf "+ber);
